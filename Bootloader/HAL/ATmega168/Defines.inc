@@ -22,10 +22,11 @@
 
 .set	BootloaderStartAddress		=	0x1E00			; Bootloader starts here
 
-; Set this bit on this port to 1 when lighting-up the LED
+; Light up this LEDs on bootloader enter
 .set	LedPort						= PORTC
 .set	LedDDR						= DDRC
-.set	LedBit						= 1
+.set	LedBit0						= 1 ; LED 0
+.set	LedBit1						= 4 ; LED 1
 
 
 ; Listen this port for bootloader button press (zero level)

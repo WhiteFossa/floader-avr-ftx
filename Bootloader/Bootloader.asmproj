@@ -84,18 +84,6 @@
     <Compile Include="HAL\ATmega168\Macros.inc">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HAL\ATmega16\Code.inc">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HAL\ATmega16\Defines.inc">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HAL\ATmega16\m16def.inc">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HAL\ATmega16\Macros.inc">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Macros.inc">
       <SubType>Code</SubType>
     </Compile>
@@ -105,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HAL" />
-    <Folder Include="HAL\ATmega16" />
     <Folder Include="HAL\ATmega168" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Assembler.targets" />

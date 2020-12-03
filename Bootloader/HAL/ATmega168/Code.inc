@@ -81,9 +81,11 @@ InitializeHardwarePostEnter:
 							uin			R16,		SREG
 							push		R16
 
-							; Signalizing LED pin to output, LED not lit yet
-							sbi			LedDDR,		LedBit
-							cbi			LedPort,	LedBit
+							; Setting LED pins to output, LEDs not lit yet
+							sbi			LedDDR,		LedBit0
+							sbi			LedDDR,		LedBit1
+							cbi			LedPort,	LedBit0
+							cbi			LedPort,	LedBit1
 
 							; UART
 							ldi			R16,		low(BaudrateDivider)
@@ -113,7 +115,8 @@ InitializeHardwarePostEnter:
 ; Call this procedure to signalize that device is in bootloader mode, for example
 ; to light up the LED
 SignalizeBootloaderMode:
-							sbi			LedPort,	LedBit
+							sbi			LedPort,	LedBit0
+							sbi			LedPort,	LedBit1
 							ret
 
 
