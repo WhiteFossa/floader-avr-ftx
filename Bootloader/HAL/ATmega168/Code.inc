@@ -57,6 +57,8 @@ DisableOrSlowDownWDT:
 ; Call this to initialize hardware (before bootloader mode enter)
 InitializeHardwarePreEnter:
 							push		R16
+							push		R17
+							push		R18
 							uin			R16,		SREG
 							push		R16
 
@@ -69,8 +71,30 @@ InitializeHardwarePreEnter:
 							; Listening pin pull-up enable
 							sbi			ListenPort,	ListenBit
 
+							; Letting debouncing capacitor at bootloader enter button charge
+							ldi			R16,		31
+
+InitializeHardwarePreEnterPauseOuterLoop:
+							ldi			R17,		255
+
+InitializeHardwarePreEnterPauseMiddleLoop:
+							ldi			R18,		255
+
+InitializeHardwarePreEnterPauseInnerLoop:
+							dec			R18
+							brne		InitializeHardwarePreEnterPauseInnerLoop
+
+							dec			R17
+							brne		InitializeHardwarePreEnterPauseMiddleLoop
+
+							dec			R16
+							brne		InitializeHardwarePreEnterPauseOuterLoop
+
+InitializeHardwarePreEnterExit:
 							pop			R16
 							uout		SREG,		R16
+							pop			R18
+							pop			R17
 							pop			R16
 							ret
 
