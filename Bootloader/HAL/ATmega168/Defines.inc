@@ -28,6 +28,10 @@
 .set	LedBit0						= 1 ; LED 0
 .set	LedBit1						= 4 ; LED 1
 
+; Pause before polling bootloader enter button. Pause is round PollPauseInner * PollPauseMiddle * PollPauseOuter * 2 * clock period
+.set	PollPauseOuter				= 0x08
+.set	PollPauseMiddle				= 0xFF
+.set	PollPauseInner				= 0xFF
 
 ; Listen this port for bootloader button press (zero level)
 .set	ListenPort					= PORTB

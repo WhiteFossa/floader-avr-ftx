@@ -72,13 +72,13 @@ InitializeHardwarePreEnter:
 							sbi			ListenPort,	ListenBit
 
 							; Letting debouncing capacitor at bootloader enter button charge
-							ldi			R16,		31
+							ldi			R16,		PollPauseOuter
 
 InitializeHardwarePreEnterPauseOuterLoop:
-							ldi			R17,		255
+							ldi			R17,		PollPauseMiddle
 
 InitializeHardwarePreEnterPauseMiddleLoop:
-							ldi			R18,		255
+							ldi			R18,		PollPauseInner
 
 InitializeHardwarePreEnterPauseInnerLoop:
 							dec			R18
